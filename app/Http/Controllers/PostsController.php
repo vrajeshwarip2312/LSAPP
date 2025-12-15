@@ -10,11 +10,9 @@ class PostsController extends Controller
 {
     public function __construct()
     {
-        // Only logged-in users can create/edit/delete
         $this->middleware('auth')->except(['index', 'show']);
     }
 
-    // Show all posts
     public function index()
     {
         $posts = Post::latest()->get();
@@ -22,7 +20,6 @@ class PostsController extends Controller
         return view('posts.index', compact('posts'));
     }
 
-    // Show single post
     public function show($id)
     {
         $post = Post::findOrFail($id);
@@ -30,7 +27,6 @@ class PostsController extends Controller
         return view('posts.show', compact('post'));
     }
 
-    // Show create post form
     public function create()
     {
         return view('posts.create');
@@ -61,7 +57,6 @@ class PostsController extends Controller
         return redirect()->route('posts.index')->with('success', 'Post created successfully!');
     }
 
-    // Show edit post form
     public function edit($id)
     {
         $post = Post::findOrFail($id);

@@ -25,7 +25,6 @@
 
                     <div class="card shadow-sm h-100">
 
-                        {{-- Post Image --}}
                         @if($post->image)
                             <img src="{{ asset('images/posts/' . $post->image) }}"
      class="card-img-top img-fluid"
